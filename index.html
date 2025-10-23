@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NoteMaker Introduction</title>
+  <style>
+    /* General Body Style */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Headings */
+    h1 {
+      text-align: center;
+      color: #0056b3;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #007bff;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      color: #444;
+      font-size: 20px;
+      margin: 20px 0 10px;
+    }
+
+    /* Paragraphs */
+    p {
+      margin: 15px 0;
+    }
+
+    /* Intro Section */
+    .intro-section {
+      margin-bottom: 20px;
+    }
+
+    /* Lists */
+    ul, ol {
+      margin-left: 20px;
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    /* Button Styles */
+    .button-container {
+      text-align: center;
+      margin: 20px 0 50px;
+    }
+
+    .open-app-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .open-app-btn:hover {
+      background-color: #218838;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer Links */
+    .footer a {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+
+    /* Footer Text */
+    .footer p {
+      text-align: center;
+      margin-top: 20px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    /* Highlight Version Section */
+    .version-section {
+      border: 1px solid #ddd;
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .version-section ul {
+      list-style: disc;
+    }
+
+    /* Highlight Important Points */
+    strong {
+      color: #007bff;
+    }
+
+    .open-app-btn {
+      background-color: #28a745; /* Vibrant green */
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      animation: pulse 1.5s infinite;
+    }
+
+    .open-app-btn:hover {
+      background-color: #218838;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05);
+    }
+
+    .open-app-btn:focus {
+      outline: none;
+      box-shadow: 0 0 10px #218838, 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+      50% {
+        transform: scale(1.03);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to KScribe</h1>
+    <h2>A Tool for TS Agents</h2>
+
+    <div class="intro-section">
+      <p><strong>KScribe</strong> is designed to help you efficiently document call case details, 
+        organize information, and guide you through call processes seamlessly. 
+        Built specifically with Call Center TS agents in mind, 
+        this app ensures you spend less time worrying about note-taking and more time focusing on resolving issues.</p>
+      
+      <p><strong>What does this tool offer?</strong></p>
+      <ul>
+        <li>A user-friendly interface to quickly create, view, and manage notes.</li>
+        <li>No more copying a template to start a note on every call. Just press new.</li>
+        <li>Gather all the relevant information and have access to it in one place.</li>
+        <li>Dynamic text areas for notes that grow with your content.</li>
+        <li>Guided prompts to ensure all critical information is captured and troubleshooting is performed during a call.</li>
+        <li>Storage and organization of notes for easy retrieval.</li>
+      </ul>
+
+      <p><strong>How to Use:</strong></p>
+      <ol>
+        <li>Click the button below to launch the KScribe app in a minimal window. You can resize it to your preference.</li>
+        <li>Create a new note with each call by clicking "New Note".</li>
+        <li>Hit "View" to see the resulting note. Copy the note and use it where needed.</li>
+        <li>Save and manage your notes for future reference or reporting.</li>
+      </ol>
+    </div>
+
+    <p style="text-align: center">Click to launch the app!</p>
+    <div class="button-container">
+      <button class="open-app-btn" onclick="openNoteMaker()">🚀 Launch KScribe</button>
+    </div>
+
+    <div class="version-section">
+      <h3>Current Version: <span style="color: #28a745;">0.9.1-beta</span></h3>
+      <ul>
+        <li>Automatic note generation with header and footer fields.</li>
+        <li>Dynamic text areas that expand as you type.</li>
+        <li>Predefined QuickTexts feature for faster note-taking.</li>
+        <li>Configuration menu for customizing note headers and footers.</li>
+        <li>Toggleable collapsible fieldsets for easier organization of form sections.</li>
+        <li>Support for copying and pasting content directly to and from inputs and text areas.</li>
+        <li>View mode for previewing formatted notes before copying.</li>
+      </ul>
+
+      <p><strong>Looking ahead to the release of Version 1.0:</strong></p>
+      <ul>
+        <li>Complete and polished user interface design.</li>
+        <li>Testing with TS agent team members for real-world feedback.</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <p><strong>KScribe</strong> - Empowering TS Agents at Telus</p>
+      <a href="terms.html">Terms, Conditions, and Security</a>
+    </div>
+  </div>
+
+  <script>
+    function openNoteMaker() {
+      const url = "app.html";
+      const windowFeatures = "width=580,height=670,resizable=yes,scrollbars=no,toolbar=no,menubar=no,location=no,status=no";
+      window.open(url, "NoteMakerApp", windowFeatures);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notes App</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+
+<link href="styles/style.css" rel="stylesheet"/><script src="scripts/main.js"></script></head>
+<body>
+<div class="nm-container">
+<div class="content">
+<!-- Config Form Container -->
+<div class="config-container hidden" id="configContainer">
+<button id="configClose" type="button"><i class="fas fa-xmark"></i></button>
+<form id="configForm">
+<fieldset id="noteDetailsConfig">
+<legend><span class="arrow">▼</span> Default Note Details</legend>
+<div class="content">
+<div>
+<label for="head">Header:</label>
+<input id="headconf" name="headconf" type="text" value="** FIFA TS - x330659 chris*"/>
+</div>
+<div>
+<label for="foot">Footer:</label>
+<input id="footconf" name="footconf" type="text" value="No more concerns. EOC"/>
+</div>
+</div>
+</fieldset>
+<button id="saveConfig" type="submit">Save Configuration</button>
+</form>
+</div>
+<form id="noteForm">
+<div class="form-fields">
+<div class="header">
+<div class="top">
+<div class="logoContainer">
+<h2 class="">KScribe</h2>
+<small>v.1.0Beta</small>
+</div>
+<div class="navbuttons" id="note-controls">
+<button class="new-btn" id="clearForm" type="button">
+<i class="fas fa-file-alt"></i> New
+    </button>
+<button class="view-btn" id="viewNote" type="button">
+<i class="fas fa-eye"></i> View
+    </button>
+<button class="save-btn" id="saveNote" type="submit">
+<i class="fas fa-save saveIcon"></i>
+<span>Save</span>
+<i class="fas fa-sync-alt saveIndicator"></i>
+</button>
+<div class="ruler"></div>
+<button class="list-btn" id="toggleNotesList" type="button">
+<i class="fas fa-bars"></i> Notes
+    </button>
+<button class="nav-btn" id="prevNoteBtn" type="button">
+<i class="fas fa-backward"></i> Prev
+    </button>
+<button class="nav-btn" id="nextNoteBtn" type="button">
+<i class="fas fa-forward"></i> Next
+    </button>
+<div class="ruler"></div>
+<button class="config-btn" id="configMenuButton" type="button">
+<i class="fas fa-cog"></i> Config
+    </button>
+</div>
+</div>
+<div class="bottom">
+<div class="noteid">
+<label for="noteid"> Note # </label>
+<input class="non-editable" id="noteid" name="noteid" readonly="" type="text" value=""/>
+</div>
+<label for="datetime">Date Time</label>
+<input class="non-editable" id="datetime" name="datetime" readonly="" type="text"/>
+<label for="datetime">L</label>
+<input class="non-editable" id="length" name="length" readonly="" type="text"/>
+</div>
+<div class="topMenuPanel">
+<span class="qtTitle" id="qtTitle">
+<i class="fas fa-pen-to-square" title="Presaved Texts"></i>
+                  Quick Texts
+             </span>
+</div>
+</div>
+<div class="notifications-area" id="notificationsArea"></div>
+<div id="mainAppContent">
+<div class="" id="noteView">
+<button id="closeNoteView"><i class="fas fa-xmark"></i></button>
+<div class="noteViewContainer">
+<div class="controls">
+<fieldset id="noteDetails">
+<legend><span class="arrow">▼</span> Note Features</legend>
+<div class="content">
+<div>
+<div class="form-item">
+<label for="head">Header:</label>
+<input id="head" name="head" type="text" value=""/>
+</div>
+<div class="form-item">
+<label for="foot">Footer:</label>
+<input id="foot" name="foot" type="text" value=""/>
+</div>
+</div>
+<div>
+<label style="width:100%"><input id="includeAll" name="includeAll" type="checkbox" value="includeAll"/> Include all data</label>
+<label>Call resolution note</label>
+<textarea class="auto-grow" id="callresnote" name="callresnote" rows="1" style="height: 26px;"></textarea>
+</div>
+</div>
+</fieldset>
+<!-- <div>
+                    <input type="text" id="closing" name="closing" class="">
+                    <label for="cbr">Closing footer</label> 
+                  </div> -->
+</div>
+<div class="noteViewItem">
+<button class="copy-button" data-target="noteViewText" id="copyButton"><i class="fas fa-clipboard"></i> Copy</button>
+<div class="copy-notification" style="display: none;">Text copied to clipboard</div>
+<textarea class="copy-text" cols="50" id="noteViewText" readonly="" rows="25"></textarea>
+</div>
+</div>
+</div>
+<div class="show" id="mainForm">
+<div class="rem-container">
+<fieldset class="reminders collapsible open" id="reminders">
+<legend><span class="arrow">▼</span> Reminders <i class="fas fa-check-double" title="Reminders"></i></legend>
+<div class="reminders-checklist content">
+<div class="reminder-item cbr">
+<p>Did you secure the call by asking for a <strong>callback number?</strong> Tell Cx you'll call back if anything happends.</p>
+<div>
+<label class="chklst-cbr-lbl">Callback Number</label>
+<div class="radio-options">
+<label for="chklst-cbr-yes">
+<input id="chklst-cbr-yes" name="chklstcbr" type="radio" value="YES">
+        YES
+      </input></label>
+<label for="chklst-cbr-no">
+<input id="chklst-cbr-no" name="chklstcbr" type="radio" value="NO">
+        NO
+      </input></label>
+</div>
+</div>
+</div>
+<div class="reminder-item pq">
+<p>Did you do all relevant <strong>Probing questions?</strong></p>
+<div>
+<label class="chklst-pq-lbl">Probing Questions</label>
+<div class="radio-options">
+<label for="chklst-pq-yes">
+<input id="chklst-pq-yes" name="chklstpq" type="radio" value="YES">
+        YES
+      </input></label>
+<label for="chklst-pq-no">
+<input id="chklst-pq-no" name="chklstpq" type="radio" value="NO">
+        NO
+      </input></label>
+</div>
+</div>
+</div>
+<div class="reminder-item awa">
+<p>Have you researched <strong>Advanced Wifi Analytics?</strong></p>
+<div>
+<label class="chklst-awa-lbl">Check AWA</label>
+<div class="radio-options">
+<label for="chklst-awa-yes">
+<input id="chklst-awa-yes" name="chklstawa" type="radio" value="YES">
+        YES
+      </input></label>
+<label for="chklst-awa-no">
+<input id="chklst-awa-no" name="chklstawa" type="radio" value="NO">
+        NO
+      </input></label>
+</div>
+</div>
+</div>
+<div class="reminder-item tvs">
+<p>Have you used <strong>TVS</strong>? Did you use Video, photos, Scan Issues, and Deadspots Scan?</p>
+<div>
+<label class="chklst-tvs-lbl">Use TVS</label>
+<div class="radio-options">
+<label for="chklst-tvs-yes">
+<input id="chklst-tvs-yes" name="chklsttvs" type="radio" value="YES">
+        YES
+      </input></label>
+<label for="chklst-tvs-no">
+<input id="chklst-tvs-no" name="chklsttvs" type="radio" value="NO">
+        NO
+      </input></label>
+</div>
+</div>
+</div>
+<div class="reminder-item wf">
+<p>Did you select and Followed the <strong>correct Insight WorkFlow?</strong></p>
+<div>
+<label class="chklst-wf-lbl">Follow WorkFlow</label>
+<div class="radio-options">
+<label for="chklst-wf-yes">
+<input id="chklst-wf-yes" name="chklstwf" type="radio" value="YES"/>
+        YES
+      </label>
+<label for="chklst-wf-no">
+<input id="chklst-wf-no" name="chklstwf" type="radio" value="NO"/>
+        NO
+      </label>
+</div>
+</div>
+</div>
+<div class="reminder-item wfp">
+<p>Did you offer <strong>Wifi Plus</strong> as a possible solution?</p>
+<div>
+<label class="chklst-wfp-lbl">Offer WiFi Plus</label>
+<div class="radio-options">
+<label for="chklst-wfp-yes">
+<input id="chklst-wfp-yes" name="chklstwfp" type="radio" value="YES"/>
+        YES
+      </label>
+<label for="chklst-wfp-no">
+<input id="chklst-wfp-no" name="chklstwfp" type="radio" value="NO"/>
+        NO
+      </label>
+</div>
+<label><input id="soldwfp" name="soldwfp" type="checkbox" value="SOLDWFP"/> Sold Wifi plus</label>
+</div>
+</div>
+<div class="reminder-item fr">
+<p>Did you do a <strong>reboot, a factory or hard reset</strong>? If that fixed the issue, <i>are you sure this is not a temporary fix?</i></p>
+<div>
+<label class="chklst-rb-lbl">Reboots/FRs</label>
+<div class="radio-options">
+<label for="chklst-rb-yes">
+<input id="chklst-rb-yes" name="chklstrb" type="radio" value="YES">
+        YES
+      </input></label>
+<label for="chklst-rb-no">
+<input id="chklst-rb-no" name="chklstrb" type="radio" value="NO"/>
+        NO
+      </label>
+</div>
+</div>
+</div>
+<div class="reminder-item swp">
+<p>Did you do a <strong>device swap</strong>? Is it absolutely necessary? Are you sure it will fix the Issue?</p>
+<div>
+<label class="chklst-swp-lbl">Swaps</label>
+<div class="radio-options">
+<label for="chklst-swp-yes">
+<input id="chklst-swp-yes" name="chklstswp" type="radio" value="YES"/>
+        YES
+      </label>
+<label for="chklst-swp-no">
+<input id="chklst-swp-no" name="chklstswp" type="radio" value="NO"/>
+        NO
+      </label>
+</div>
+</div>
+</div>
+<div class="reminder-item dis">
+<p>Did you do <strong>dispatch</strong>? Is it absolutely necessary? Are you sure a Technician is needes on site?</p>
+<div>
+<label class="chklst-dis-lbl">Dispatch</label>
+<div class="radio-options">
+<label for="chklst-dis-yes">
+<input id="chklst-dis-yes" name="chklstdis" type="radio" value="YES"/>
+        YES
+      </label>
+<label for="chklst-dis-no">
+<input id="chklst-dis-no" name="chklstdis" type="radio" value="NO"/>
+        NO
+      </label>
+</div>
+</div>
+</div>
+<div class="others">
+<label><input id="piws" name="piws" type="checkbox" value="PIWS"/> PIWS Consult</label>
+<label><input id="bosr" name="bosr" type="checkbox" value="BOSR"/> BOSR</label>
+<label><input id="nctix" name="nctix" type="checkbox" value="NCTIX"/> NCTix</label>
+<label><input id="cct" name="cct" type="checkbox" value="CCT"/> CCT</label>
+<label><input id="spoc" name="spoc" type="checkbox" value="SPOC"/> SPOC</label>
+</div>
+</div>
+</fieldset>
+</div>
+<fieldset class="verif collapsible open" id="verif">
+<legend><span class="arrow">▼</span> Verification</legend>
+<div class="content">
+<div class="cx-rol">
+<label>
+<input name="crol" type="radio" value="AccOwn"> Acc. Owner
+                    </input></label>
+<label>
+<input name="crol" type="radio" value="AuthUsr"> Auth. User
+                    </input></label>
+<label>
+<input name="crol" type="radio" value="Other"> Other
+                    </input></label>
+</div>
+<div class="auth-data">
+<label><input id="ivr" name="ivr" type="checkbox" value="IVR"/> IVR</label>
+<label><input id="pin" name="pin" type="checkbox" value="PIN"/> PIN</label>
+<label><input id="dob" name="dob" type="checkbox" value="DOB"/> DOB</label>
+<label><input id="cc" name="cc" type="checkbox" value="CC"/> CC</label>
+<label><input id="sin" name="sin" type="checkbox" value="SIN"/> SIN</label>
+<label><input id="dl" name="dl" type="checkbox" value="DL"/> DL</label>
+<label><input id="pcn" name="pcn" type="checkbox" value="PCN"/> 1ry c#</label>
+<label><input id="scn" name="scn" type="checkbox" value="SCN"/> 2dry c#</label>
+<label><input id="email" name="email" type="checkbox" value="Email"/> Email</label>
+</div>
+<div class="manauth">
+<label><input id="addr" name="addr" type="checkbox" value="BillAddr"/> Bill Addr/P.C.</label>
+<label><input id="manauth" name="manauth" type="checkbox" value="ManualAuth"/> Manual Auth</label>
+<textarea class="auto-grow" id="manauth_txt" name="manauth_txt" rows="1"></textarea>
+</div>
+</div>
+</fieldset>
+<fieldset class="c-data" id="c-data">
+<legend>Customer data &amp; ticket</legend>
+<div class="left">
+<div class="callername">
+<label for="callername">Callr Name</label>
+<input id="callername" name="callername" type="text"/>
+</div>
+<div>
+<label for="cbr">CBR</label>
+<i class="paste-icon fas fa-paste" data-target="cbr" title="paste"></i>
+<input class="has-paste-button" id="cbr" name="cbr" type="text"/>
+<i class="copy-icon fas fa-copy" data-target="cbr" title="copy"></i>
+</div>
+<div class="input-container">
+<label for="cid">CID</label>
+<i class="paste-icon fas fa-paste" data-target="cid"></i>
+<input class="has-paste-button" id="cid" name="cid" type="text"/>
+<i class="copy-icon fas fa-copy" data-target="cid"></i>
+</div>
+<div>
+<label for="ban">BAN</label>
+<i class="paste-icon fas fa-paste" data-target="ban" title="paste"></i>
+<input class="has-paste-button" id="ban" name="ban" type="text"/>
+<i class="copy-icon fas fa-copy" data-target="ban" title="copy"></i>
+</div>
+</div>
+<div class="right">
+<div class="name">
+<label for="name">Cx Name</label>
+<i class="paste-icon fas fa-paste" data-target="name" title="paste"></i>
+<input class="has-paste-button" id="name" name="name" type="text"/>
+<i class="copy-icon fas fa-copy" data-target="name" title="copy"></i>
+</div>
+<div class="tt">
+<label for="tt">Remedy Ticket</label>
+<i class="paste-icon fas fa-paste" data-target="tt" title="paste"></i>
+<input class="has-paste-button" id="tt" name="tt" type="text"/>
+<i class="copy-icon fas fa-copy" data-target="tt" title="copy"></i>
+</div>
+<!-- <div class="ncticket">
+                    <label for="ncticket">NC Ticket</label>
+
+                    <i class="paste-icon fas fa-paste" title="paste" data-target="ncticket"></i>
+                    <input type="text" id="ncticket" name="ncticket" class="has-paste-button">                    
+                    <i class="copy-icon fas fa-copy" title="copy" data-target="ncticket"></i>
+                  </div> -->
+<div class="address">
+<label for="address">Address</label>
+<i class="paste-icon fas fa-paste" data-target="address" title="paste"></i>
+<input class="has-paste-button" id="address" name="address" type="text"/>
+<i class="copy-icon fas fa-copy" data-target="address" title="copy"></i>
+</div>
+<div class="email">
+<label for="email">Email</label>
+<i class="paste-icon fas fa-paste" data-target="email" title="paste"></i>
+<input class="has-paste-button" id="email" name="email" type="text"/>
+<i class="copy-icon fas fa-copy" data-target="email" title="copy"></i>
+</div>
+</div>
+</fieldset>
+<div class="issue floating-label">
+<label class="" for="issue">Issue / Cx description of problem:</label>
+<textarea class="auto-grow" id="issue" name="issue" rows="1"></textarea>
+</div>
+<fieldset class="tech collapsible" id="tech">
+<legend><span class="arrow">▼</span> Technology &amp; Devices: Insight / TVS / Issues </legend>
+<div class="content">
+<div class="wf">
+<label for="wf">Workflow:</label>
+<input id="wf" name="wf" type="text"/>
+</div>
+<div class="tvs_code">
+<label for="tvs_code">TVS Sess Code:</label>
+<i class="paste-icon fas fa-paste" data-target="tvs_code" title="paste"></i>
+<input class="has-paste-button" id="tvs_code" name="tvs_code" type="text"/>
+<i class="copy-icon fas fa-copy" data-target="tvs_code" title="copy"></i>
+</div>
+<div class="topology floating-label">
+<label class="" for="topology">Topology / List Devices / Adv. Analytics / Outages / Insight observations </label>
+<label class="" for="tvs_results">Scan / Speed test / Deadspots scan / Observations</label>
+<textarea class="auto-grow" id="topology" name="topology" rows="1"></textarea>
+</div>
+</div>
+</fieldset>
+<div class="actions floating-label">
+<label for="actions">Actions Taken, Resolution: Seq Reboot &amp; Hard Resets / Escalations / Swap / Dispatch / Offer: Wifi plus, upgrade plan.</label>
+<textarea class="auto-grow" id="actions" name="actions" rows="1"></textarea>
+</div>
+</div>
+<div class="notesListContainer" id="notesListContainer">
+<div class="notesListHeader" id="notesListHeader">
+<h2>Saved Notes</h2>
+<button id="notesListClose" type="button"><i class="fas fa-xmark"></i></button>
+</div>
+<div class="tabs-container">
+<ul class="tabs-nav">
+<li class="active" data-tab="notes-list-tab" id="notesListTabBtn">Notes List</li>
+<li data-tab="summary-tab" id="summaryTabBtn">Summary</li>
+<li data-tab="all-notes-tab" id="allNotesTabBtn">All Notes Text</li>
+<li data-tab="csv-tab" id="csvTabBtn">CSV</li>
+</ul>
+<div class="tab-content active" id="notes-list-tab">
+<ul id="notesList"></ul>
+</div>
+<div class="tab-content" id="summary-tab">
+<h3>Notes Summary</h3>
+<div class="monthly-summary summary">
+<div id="monthlySummaryContent"></div>
+</div>
+<div class="daily-summary summary">
+<div id="summaryContent"></div>
+</div>
+</div>
+<div class="tab-content" id="all-notes-tab">
+<div class="notesListTextContainer" id="notesListTextContainer">
+<label for="allnotes">All notes in a text</label>
+<textarea class="" id="allNotes" name="allnotes" rows="30"></textarea>
+</div>
+</div>
+<div class="tab-content" id="csv-tab">
+<div class="csvContainer" id="csvContainer">
+<button class="download-btn" id="downloadCSV">Download CSV</button>
+<textarea class="" id="notesCSV" name="notesCSV" rows="30"></textarea>
+</div>
+</div>
+</div>
+</div>
+<div class="preset-container hidden" id="presetContainer">
+<div class="add-preset">
+<textarea class="" id="newPresetInput" name="newPresetInput" placeholder="Add new text here..." rows="1"></textarea>
+<button id="addPresetButton">Add</button>
+</div>
+<div class="preset-texts" id="presetTexts">
+<!-- Presaved texts will appear here -->
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+
+</body>
+</html>
