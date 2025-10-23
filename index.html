@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NoteMaker Introduction</title>
+  <title>KScribe Notetaker - Demo & Features</title>
   <style>
-    /* General Body Style */
+    /* Mantén tus estilos aquí, actualizados según tu versión actual */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -14,8 +14,6 @@
       color: #333;
       line-height: 1.6;
     }
-
-    /* Main Container */
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -24,72 +22,65 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
-
-    /* Headings */
     h1 {
       text-align: center;
       color: #0056b3;
       font-size: 32px;
       margin-bottom: 10px;
     }
-
     h2 {
       text-align: center;
       color: #007bff;
       font-size: 24px;
       margin-bottom: 20px;
     }
-
     h3 {
       color: #444;
       font-size: 20px;
       margin: 20px 0 10px;
     }
-
-    /* Paragraphs */
-    p {
-      margin: 15px 0;
-    }
-
-    /* Intro Section */
-    .intro-section {
-      margin-bottom: 20px;
-    }
-
-    /* Lists */
-    ul, ol {
-      margin-left: 20px;
-      padding-left: 20px;
-    }
-
-    li {
-      margin: 8px 0;
-    }
-
-    /* Button Styles */
-    .button-container {
-      text-align: center;
-      margin: 20px 0 50px;
-    }
-
+    p { margin: 15px 0; }
+    .intro-section { margin-bottom: 20px; }
+    ul, ol { margin-left: 20px; padding-left: 20px; }
+    li { margin: 8px 0; }
+    .button-container { text-align: center; margin: 20px 0 50px; }
     .open-app-btn {
       background-color: #28a745;
       color: white;
       border: none;
-      padding: 10px 20px;
-      font-size: 18px;
+      padding: 15px 25px;
+      font-size: 20px;
       font-weight: bold;
-      border-radius: 5px;
+      border-radius: 50px;
       cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+      animation: pulse 1.5s infinite;
     }
-
     .open-app-btn:hover {
       background-color: #218838;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+      transform: scale(1.05);
     }
-
-    /* Footer Links */
+    .open-app-btn:focus {
+      outline: none;
+      box-shadow: 0 0 10px #218838, 0 4px 8px rgba(0,0,0,0.18);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 4px 6px rgba(0,0,0,0.18);}
+      50% { transform: scale(1.03); box-shadow: 0 6px 8px rgba(0,0,0,0.28);}
+      100% { transform: scale(1); box-shadow: 0 4px 6px rgba(0,0,0,0.18);}
+    }
+    .version-section {
+      border: 1px solid #ddd;
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .version-section ul, .release-notes ul {
+      list-style: disc;
+    }
     .footer a {
       display: block;
       text-align: center;
@@ -99,139 +90,93 @@
       text-decoration: none;
       transition: color 0.3s ease;
     }
-
-    .footer a:hover {
-      color: #0056b3;
-      text-decoration: underline;
-    }
-
-    /* Footer Text */
+    .footer a:hover { color: #0056b3; text-decoration: underline; }
     .footer p {
       text-align: center;
       margin-top: 20px;
       color: #555;
       font-size: 14px;
     }
-
-    /* Highlight Version Section */
-    .version-section {
-      border: 1px solid #ddd;
-      background-color: #f9f9f9;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
+    strong { color: #007bff; }
+    .github-link {
+      margin: 15px 0;
+      text-align: center;
     }
-
-    .version-section ul {
-      list-style: disc;
-    }
-
-    /* Highlight Important Points */
-    strong {
-      color: #007bff;
-    }
-
-    .open-app-btn {
-      background-color: #28a745; /* Vibrant green */
-      color: white;
-      border: none;
-      padding: 15px 25px;
-      font-size: 20px;
+    .github-link a {
+      background: #24292F;
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 6px;
       font-weight: bold;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-      animation: pulse 1.5s infinite;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s;
     }
-
-    .open-app-btn:hover {
-      background-color: #218838;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-      transform: scale(1.05);
-    }
-
-    .open-app-btn:focus {
-      outline: none;
-      box-shadow: 0 0 10px #218838, 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      }
-      50% {
-        transform: scale(1.03);
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      }
+    .github-link a:hover { background: #007bff; }
+    .release-notes {
+      margin-top: 18px;
+      margin-bottom: 0;
+      background-color: #f1f8e9;
+      border-left: 5px solid #2ecc71;
+      padding: 15px;
+      border-radius: 7px;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Welcome to KScribe</h1>
-    <h2>A Tool for TS Agents</h2>
-
+    <h2>A Tool for Technical Support Agents</h2>
     <div class="intro-section">
-      <p><strong>KScribe</strong> is designed to help you efficiently document call case details, 
-        organize information, and guide you through call processes seamlessly. 
-        Built specifically with Call Center TS agents in mind, 
-        this app ensures you spend less time worrying about note-taking and more time focusing on resolving issues.</p>
+      <p><strong>KScribe</strong> empowers TS/call center agents to efficiently document and organize case details, streamlining call processes and resolving issues faster. Spend less time on note-taking; focus on support!</p>
       
-      <p><strong>What does this tool offer?</strong></p>
-      <ul>
-        <li>A user-friendly interface to quickly create, view, and manage notes.</li>
-        <li>No more copying a template to start a note on every call. Just press new.</li>
-        <li>Gather all the relevant information and have access to it in one place.</li>
-        <li>Dynamic text areas for notes that grow with your content.</li>
-        <li>Guided prompts to ensure all critical information is captured and troubleshooting is performed during a call.</li>
-        <li>Storage and organization of notes for easy retrieval.</li>
-      </ul>
-
-      <p><strong>How to Use:</strong></p>
-      <ol>
-        <li>Click the button below to launch the KScribe app in a minimal window. You can resize it to your preference.</li>
-        <li>Create a new note with each call by clicking "New Note".</li>
-        <li>Hit "View" to see the resulting note. Copy the note and use it where needed.</li>
-        <li>Save and manage your notes for future reference or reporting.</li>
-      </ol>
+    </div>
+    <div class="button-container">
+      <button class="open-app-btn" onclick="openNoteMaker()">🚀 Launch KScribe Demo</button>
     </div>
 
-    <p style="text-align: center">Click to launch the app!</p>
-    <div class="button-container">
-      <button class="open-app-btn" onclick="openNoteMaker()">🚀 Launch KScribe</button>
+    <p>Download the source code on GitHub:</p>
+    <div class="github-link">
+        <a href="https://github.com/x7ian/KScribe" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" style="vertical-align:middle; margin-right:8px;">
+            <path fill="#fff" d="M12 2C6.477 2 2 6.484 2 12.021c0 4.425 2.867 8.181 6.839 9.525.5.091.682-.218.682-.484 0-.237-.008-.867-.013-1.701-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.907-.62.068-.608.068-.608 1.004.071 1.532 1.034 1.532 1.034.892 1.529 2.341 1.088 2.91.832.091-.647.349-1.088.635-1.339-2.221-.253-4.555-1.113-4.555-4.953 0-1.093.39-1.988 1.029-2.688-.103-.254-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.563 9.563 0 0 1 12 7.501c.851.004 1.708.114 2.508.335 1.909-1.296 2.748-1.025 2.748-1.025.546 1.378.202 2.396.099 2.65.64.7 1.028 1.595 1.028 2.688 0 3.849-2.337 4.697-4.565 4.945.358.309.678.918.678 1.85 0 1.336-.012 2.415-.012 2.743 0 .268.18.579.688.481C19.137 20.199 22 16.445 22 12.021 22 6.484 17.523 2 12 2z"/>
+          </svg>
+          View on GitHub
+        </a>
     </div>
 
     <div class="version-section">
-      <h3>Current Version: <span style="color: #28a745;">0.9.1-beta</span></h3>
+      <h3>Current Version: <span style="color: #28a745;">1.0.1</span></h3>
       <ul>
-        <li>Automatic note generation with header and footer fields.</li>
-        <li>Dynamic text areas that expand as you type.</li>
-        <li>Predefined QuickTexts feature for faster note-taking.</li>
-        <li>Configuration menu for customizing note headers and footers.</li>
-        <li>Toggleable collapsible fieldsets for easier organization of form sections.</li>
-        <li>Support for copying and pasting content directly to and from inputs and text areas.</li>
-        <li>View mode for previewing formatted notes before copying.</li>
+        <li>Compact, fixed-size window (resizable for agent comfort)</li>
+        <li>Automatic note generation with header/footer fields</li>
+        <li>Autosaved notes in browser with easy retrieval</li>
+        <li>QuickTexts (presaved texts) for rapid entry</li>
+        <li>Guided checklists and reminders for call workflow completion</li>
+        <li>Copy/paste support in all fields and formatted notes</li>
+        <li>Fast CSV export of notes for reporting</li>
+        <li>Summary views: monthly, daily, and by case</li>
+        <li>Full local data privacy (no server required)</li>
+        <li>Configurable UI: collapsible sections, custom header/footer, etc.</li>
       </ul>
+    </div>
 
-      <p><strong>Looking ahead to the release of Version 1.0:</strong></p>
+    <div class="release-notes">
+      <h3>Release Notes v1.0.0</h3>
       <ul>
-        <li>Complete and polished user interface design.</li>
-        <li>Testing with TS agent team members for real-world feedback.</li>
+        <li>Stable, production-ready</li>
+        <li>Improved UI responsiveness and transitions</li>
+        <li>Enhanced summary analytics panel</li>
+        <li>Bug fixes for copy/paste and autosave</li>
+        <li>New demo page with direct GitHub link for contributors</li>
       </ul>
+      <p>Next: Planned features for v1.1.x include remote sync, advanced search, and dark mode.</p>
     </div>
 
     <div class="footer">
-      <p><strong>KScribe</strong> - Empowering TS Agents at Telus</p>
-      <a href="terms.html">Terms, Conditions, and Security</a>
+      <p><strong>KScribe</strong> — Empowering Technical Support Agents</p>
     </div>
   </div>
-
   <script>
     function openNoteMaker() {
       const url = "app.html";
